@@ -1,4 +1,4 @@
-Vue.component('comic-component', {
+Vue.component('comic-upload', {
   template: `
   <div class="uploader container col-md-6 col-md-offset-3">
     <form>
@@ -12,19 +12,15 @@ Vue.component('comic-component', {
         </div>
         <div class="form-group row">
           <div class="col-md-12">
-            <label for="description">Desc</label>
-            <input v-model="desc" class="form-control" id="description" placeholder="Enter description" type="text">
-            <small id="descHelp" class="form-text text-muted">Descriptive title</small>
+            <label for="title">Title</label>
+            <input v-model="title" class="form-control" id="description" placeholder="Enter Title" type="text">
+            <small id="titleHelp" class="form-text text-muted">Descriptive title</small>
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="volume">Volume</label>
             <input v-model="volume" class="form-control" id="volume" placeholder="volume" type="text">
-          </div>
-          <div class="col-md-6">
-            <label for="chapter">Chapter</label>
-            <input v-model="chapter" class="form-control" id="chapter" placeholder="chapter" type="text">
           </div>
         </div>
         <div class="form-group">
@@ -46,11 +42,13 @@ Vue.component('comic-component', {
   data: function () {
     return {
       author: '',
-      desc: '',
+      title: '',
       volume: '',
       chapter: '',
       image: '',
-      images: []
+      images: [],
+      active: 'item active',
+      noactive: 'item'
     }
   },
   methods: {
