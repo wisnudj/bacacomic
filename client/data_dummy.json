@@ -1,0 +1,15 @@
+{
+  "comic": 
+    {
+      "_id": 1,
+      "author": "tuti",
+      "title": "tuti",
+      "chapter": "1",
+      "images": [
+        "assets/img/tuti_1/1.png",
+        "assets/img/tuti_1/2.png",
+        "assets/img/tuti_1/3.png"
+      ]
+    }
+  
+}
