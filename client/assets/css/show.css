@@ -1,0 +1,21 @@
+.show {
+  margin-top: -20px;
+}
+.form {
+  text-align: center;
+}
+
+.item img {
+  width: 93vh;
+}
+
+img {
+  width: 30%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  
+}

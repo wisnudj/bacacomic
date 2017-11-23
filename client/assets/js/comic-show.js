@@ -1,6 +1,6 @@
 Vue.component('comic-show', {
   template: `
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+  <div id="myCarousel" class="carousel slide show" data-ride="carousel" data-interval="false">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -21,11 +21,11 @@ Vue.component('comic-show', {
     </div>
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev" @click="prevpos" >
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <a class="right carousel-control" href="#myCarousel" data-slide="next" @click="nextpos" >
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -37,7 +37,8 @@ Vue.component('comic-show', {
       author: '',
       title: '',
       chapter: '',
-      images: []
+      images: [],
+      pos: 0
     }
   },
   methods: {
@@ -49,10 +50,35 @@ Vue.component('comic-show', {
         this.title = response.data.title
         this.chapter = response.data.chapter
         this.images = response.data.images
+        
+        let link = this.images[this.pos]
+        this.$emit('download-link', {
+          link: link
+        })
       })
       .catch(function (error) {
         console.log(error);
       });
+    },
+    nextpos: function () {
+      this.pos += 1
+      if(this.pos>this.images.length-1){
+        this.pos=0;
+      }
+      let link = this.images[this.pos]
+      this.$emit('download-link', {
+        link: link
+      })
+    },
+    prevpos: function () {
+      this.pos -= 1
+      if(this.pos<0){
+        this.pos=this.images.length-1;
+      }
+      let link = this.images[this.pos]
+      this.$emit('download-link', {
+        link: link
+      })
     }
   },
   created() {

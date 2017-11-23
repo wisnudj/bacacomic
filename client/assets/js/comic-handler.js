@@ -1,20 +1,15 @@
 new Vue({
   el: '#app',
   data: {
-    
+    link: '#'
   },
   methods: {
-    getComic: function () {
-      axios.get('http://localhost:3000/comic')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    downloadlink: function (payload) {
+      this.link = payload.link
     }
   },
-  created() {
-    this.getComic();
+  ready() {
+    console.log('-----------mounted')
+    this.downloadlink();
   }
 })
