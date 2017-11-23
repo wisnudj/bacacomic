@@ -1,26 +1,23 @@
 {
-  "name": "bacacomic",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "tamvan-gcp-storage-uploader",
+  "version": "0.1.0",
+  "private": false,
+  "public": true,
+  "keywords": "google, cloud, platform, storage, file, upload",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wisnudj/bacacomic.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wisnudj/bacacomic/issues"
-  },
-  "homepage": "https://github.com/wisnudj/bacacomic#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "@google-cloud/storage": "^1.2.0",
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.3",
+    "debug": "~2.2.0",
+    "dotenv": "^4.0.0",
+    "express": "~4.13.4",
     "mongoose": "^4.13.4",
+    "morgan": "~1.7.0",
     "multer": "^1.3.0"
   }
 }
