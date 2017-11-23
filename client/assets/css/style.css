@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+=======
+
+.form {
+  text-align: center;
+}
+img {
+  width: 30%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.item img {
+  width: 100vh;
+}
+
+button {
+  
+}
+
+>>>>>>> 62f038e3113e1aa76d9c5ceca426234b23bc7958
 .jumbotron-billboard .img {
     margin-bottom: 0px;
     opacity: 0.8;
