@@ -16,7 +16,7 @@ Vue.component('comic-upload', {
             <input v-model="title" class="form-control" id="description" placeholder="Enter Title" type="text">
             <small id="titleHelp" class="form-text text-muted">Descriptive title</small>
           </div>
-        </div>
+        </div> 
         <div class="form-group row">
           <div class="col-md-12">
             <label for="volume">Volume</label>
