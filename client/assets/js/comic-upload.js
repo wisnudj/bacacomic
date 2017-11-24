@@ -20,7 +20,7 @@ Vue.component('comic-upload', {
         <div class="form-group row">
           <div class="col-md-12">
             <label for="chapter">Chapter</label>
-            <input v-model="volume" class="form-control" id="chapter" placeholder="volume" type="text">
+            <input v-model="chapter" class="form-control" id="chapter" placeholder="chapter" type="text">
           </div>
         </div>
         <div class="form-group">
