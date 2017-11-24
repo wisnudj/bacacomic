@@ -1,7 +1,7 @@
 Vue.component('comic-upload', {
   template: `
   <div class="uploader container col-md-6 col-md-offset-3">
-    <form>
+    <form enctype="multipart/form-data" method="post">
       <fieldset>
         <legend>Upload your comic</legend>
         <div class="form-group row">
@@ -26,7 +26,7 @@ Vue.component('comic-upload', {
         <div class="form-group">
           <label for="exampleInputFile">File input</label>
           <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file" @change="onFileChange">
-          <small id="fileHelp" class="form-text text-muted">maximum file size: 10MB</small>
+          <small id="fileHelp" class="form-text text-muted">  maximum file size: 10MB</small>
         </div>
         <div v-if="images">
             <span @click="removeImage"><img v-for="(img, index) in images" :src="img" /></span>
@@ -44,14 +44,18 @@ Vue.component('comic-upload', {
       volume: '',
       chapter: '',
       image: '',
-      images: [],
+      images : [],
+      // images: [],
+      imagesurl: [],
       active: 'item active',
       noactive: 'item'
     }
   },
   methods: {
     onFileChange: function (e) {
+      console.log(e)
       var files = e.target.files || e.dataTransfer.files;
+      // console.log(files)
       if (!files.length)
         return;
       else {
@@ -59,27 +63,29 @@ Vue.component('comic-upload', {
       }
       this.image = ''
     },
-    createImage: function(file) {
+    createImage: function(file) { 
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
-
       reader.onload = (e) => {
         vm.image = e.target.result;
-        this.images.push(vm.image)
+        // this.images.push(image)
       };
-      reader.readAsDataURL(file);
+      this.images.push(file)
+      reader.readAsDataURL(file)
     },
     postform: function() {
       console.log('============');
       var formData = new FormData();
       formData.append('author', this.author);
-      formData.append('desc', this.desc);
-      formData.append('volume', this.volume);
+      formData.append('title', this.title);
       formData.append('chapter', this.chapter);
-      formData.append('images', this.images);
 
-      axios.post('http://localhost:3000/posts', formData)
+      for (let i = 0 ; i<this.images.length ; i++){
+      formData.append('images[]', this.images[i]);
+      }
+
+      axios.post('http://localhost:3000/upload', formData)
       .then(function (response) {
         console.log(response);
       })

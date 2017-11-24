@@ -16,12 +16,14 @@ const getPublicUrl = (filename) => {
 }
 
 const sendUploadToGCS = (req, res, next) => {
+  // console.log("ini req body", req.body)
+  // console.log("ini req file", req.files,req.file)
   if (!req.files) {
     return next()
   }
-  console.log(req.filesUrls);
+  // console.log(req.filesUrls);
   if(!req.filesUrls){
-    console.log("masuk")
+    // console.log("masuk")
     req.filesUrls = []
   }
   
