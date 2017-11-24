@@ -2,11 +2,19 @@ new Vue({
   el: '#app',
   data: {
     link: '#',
+    linktweet: '',
     comics: []
   },
   methods: {
     downloadlink: function (payload) {
       this.link = payload.link
+      this.linktweet = 'https://twitter.com/intent/tweet?text='+payload.link
+    },
+    
+    Mywindow: function(){
+      console.log('---------------');
+      window.open(this.linktweet, 'windowname', 'location=0, status=0, resizable=1, scrollbars=1, width=600, height=400');;
+      return false;
     },
 
     readDB: function () {
