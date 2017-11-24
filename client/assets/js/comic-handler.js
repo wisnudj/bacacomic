@@ -10,7 +10,7 @@ new Vue({
     },
 
     readDB: function () {
-      axios.get('http://localhost:3000/allcomic')
+      axios.get('http://api.comic.ga/')
         .then((response) => {
           this.comics = response.data
           console.log(this.comics);
@@ -26,7 +26,6 @@ new Vue({
     }
   },
   ready() {
-    console.log('-----------mounted')
     this.downloadlink();
   },
 

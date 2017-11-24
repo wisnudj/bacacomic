@@ -43,7 +43,8 @@ Vue.component('comic-show', {
   },
   methods: {
     getcomic: function () {
-      axios.get('http://localhost:3000/comic')
+      var idcomic = localStorage.getItem("idcomic");
+      axios.get('http://api.comic.ga/'+idcomic)
       .then(response => {
         this.id = response.data._id
         this.author = response.data.author
@@ -56,7 +57,7 @@ Vue.component('comic-show', {
           link: link
         })
       })
-      .catch(function (error) {
+      .catch((error)=>{
         console.log(error);
       });
     },

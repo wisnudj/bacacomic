@@ -19,8 +19,8 @@ Vue.component('comic-upload', {
         </div> 
         <div class="form-group row">
           <div class="col-md-12">
-            <label for="volume">Volume</label>
-            <input v-model="volume" class="form-control" id="volume" placeholder="volume" type="text">
+            <label for="chapter">Chapter</label>
+            <input v-model="volume" class="form-control" id="chapter" placeholder="volume" type="text">
           </div>
         </div>
         <div class="form-group">
@@ -32,7 +32,7 @@ Vue.component('comic-upload', {
             <span @click="removeImage"><img v-for="(img, index) in imageurl" :src="img" /></span>
           <!-- <button class="btn btn-primary" @click="removeImage(index)">Remove image</button> -->
         </div>
-        <button v-on:click="postform" type="submit" value="Submit" class="btn btn-primary">Submit</button>
+        <button v-on:click.submit.prevent="postform" type="submit" value="Submit" class="btn btn-primary">Submit</button>
       </fieldset>
     </form>
   </div>  
@@ -72,22 +72,23 @@ Vue.component('comic-upload', {
       this.images.push(file)
     },
     postform: function() {
-      console.log('============');
       var formData = new FormData();
       formData.append('author', this.author);
       formData.append('title', this.title);
       formData.append('chapter', this.chapter);
 
       for (let i = 0 ; i<this.images.length ; i++){
-      formData.append('images[]', this.images[i]);
+        formData.append('images[]', this.images[i]);
       }
 
-      axios.post('http://localhost:3000/upload', formData)
-      .then(function (response) {
+      axios.post('http://api.comic.ga/upload', formData)
+      .then((response) => {
         console.log(response);
+        alert("upload success");
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        alert("upload unsuccessful");
       });
 
     },

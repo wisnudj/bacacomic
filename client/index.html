@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Fotoabstrak</title>
+    <title>Baca Comic: comic.ga</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
                       <p>
                           Upload dan share comic favoritemu ...
                       </p>
-                      <a href="#" class="btn btn-success btn-lg">upload</a>
+                      <a href="upload.html" class="btn btn-success btn-lg">upload</a>
                       <a href="#section1" class="btn btn-success btn-lg">baca</a>
                   </div>
               </div>
@@ -53,17 +53,17 @@
                     <th>Author</th>
                     <th>Chapter</th>
                     <th>Release Date</th>
-                    <th>Share</th>
+                    <!-- <th>Share</th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="comic in comics">
-                    <td>1,001</td>
+                  <tr v-for="(comic, index) in comics">
+                    <td>{{ index+1 }}</td>
                     <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.title}}</a></td>
                     <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.author}}</a></td>
                     <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.chapter}}</a></td>
-                    <td>sit</td>
-                    <td><a href="#" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?text=helloworld', 'windowname', 'location=0, status=0, resizable=1, scrollbars=1, width=600, height=400');; return false;">Click Here</a></td>
+                    <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.createdDate}}</a></td>
+                    <!-- <td><a href="#" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?text=helloworld', 'windowname', 'location=0, status=0, resizable=1, scrollbars=1, width=600, height=400');; return false;">Click Here</a></td> -->
                   </tr>
                 </tbody>
               </table>
