@@ -10,6 +10,30 @@
         "assets/img/tuti_1/2.png",
         "assets/img/tuti_1/3.png"
       ]
-    }
-  
+    },
+  "allcomic":
+    [
+      {
+        "_id": 1,
+        "author": "tuti",
+        "title": "tuti",
+        "chapter": "1",
+        "images": [
+          "assets/img/tuti_1/1.png",
+          "assets/img/tuti_1/2.png",
+          "assets/img/tuti_1/3.png"
+        ]
+      },
+      {
+        "_id": 2,
+        "author": "santi",
+        "title": "santi",
+        "chapter": "1",
+        "images": [
+          "assets/img/tuti_1/1.png",
+          "assets/img/tuti_1/2.png",
+          "assets/img/tuti_1/3.png"
+        ]
+      }
+    ]
 }
