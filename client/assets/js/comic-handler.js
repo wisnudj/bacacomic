@@ -22,7 +22,7 @@ new Vue({
 
     sendid: function(id) {
       localStorage.setItem("idcomic", id)
-      console.log(localStorage.getItem("idcomic"))
+      console.log(localStorage.getItem("idcomic")) 
     }
   },
   ready() {
