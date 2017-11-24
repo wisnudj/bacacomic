@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+KEY_FILE.json
+
+
