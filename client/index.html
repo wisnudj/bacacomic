@@ -53,63 +53,18 @@
                     <th>Author</th>
                     <th>Chapter</th>
                     <th>Release Date</th>
-                    <th>Share</th> 
+                    <th>Share</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="comic in comics">
                     <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
+                    <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.title}}</a></td>
+                    <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.author}}</a></td>
+                    <td><a href="read.html" v-on:click="sendid(comic._id)">{{comic.chapter}}</a></td>
                     <td>sit</td>
-                    <td>
-                      <a href="#" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?text=helloworld', 'windowname', 'location=0, status=0, resizable=1, scrollbars=1, width=600, height=400');; return false;">Click Here</a>
-                    </td>
+                    <td><a href="#" onClick="MyWindow=window.open('https://twitter.com/intent/tweet?text=helloworld', 'windowname', 'location=0, status=0, resizable=1, scrollbars=1, width=600, height=400');; return false;">Click Here</a></td>
                   </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-
                 </tbody>
               </table>
             </div>
@@ -171,6 +126,11 @@
     <!-- <script src="assets/js/comic-upload.js" charset="utf-8"></script>
     <script src="assets/js/comic-show.js" charset="utf-8"></script> -->
     <script src="assets/js/comic-handler.js"></script>
+    <script>
+
+
+
+    </script>
 
   </body>
 </html>
