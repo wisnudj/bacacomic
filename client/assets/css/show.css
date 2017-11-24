@@ -1,0 +1,10 @@
+.show {
+  margin-top: -20px;
+}
+
+.item img {
+  display: block;
+  margin-bottom: 10px;
+  margin: auto;
+  width: 95vh;
+}
