@@ -25,12 +25,12 @@ Vue.component('comic-upload', {
         </div>
         <div class="form-group">
           <label for="exampleInputFile">File input</label>
-          <input class="form-control-file" id="inputfile" aria-describedby="fileHelp" type="file" @change="onFileChange" multiple>
-          <small id="fileHelp" class="form-text text-muted">maximum file size: 10MB</small>
+          <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file" @change="onFileChange">
+          <small id="fileHelp" class="form-text text-muted">  maximum file size: 10MB</small>
         </div>
         <div v-if="images">
-            <span @click="removeImage"><img v-for="(img, index) in images" :src="img" /></span>
-          <!-- <button class="btn btn-primary" @click="removeImage">Remove image</button> -->
+            <span @click="removeImage"><img v-for="(img, index) in imageurl" :src="img" /></span>
+          <!-- <button class="btn btn-primary" @click="removeImage(index)">Remove image</button> -->
         </div>
         <button v-on:click="postform" type="submit" value="Submit" class="btn btn-primary">Submit</button>
       </fieldset>
@@ -44,8 +44,10 @@ Vue.component('comic-upload', {
       volume: '',
       chapter: '',
       image: '',
-      images: [],
-      active: 'item active'
+      images : [],
+      imageurl: [],
+      active: 'item active',
+      noactive: 'item'
     }
   },
   methods: {
@@ -55,40 +57,32 @@ Vue.component('comic-upload', {
         return;
       else {
         this.createImage(files[0]);
-        this.tobinary(files[0]);
       }
       this.image = ''
-    },
-    tobinary: function(file){
-      var read = new FileReader();
-      read.onload = function(e) {
-        console.log(e)
-        this.bfile = e.target.result 
-      }
-      read.readAsText(file);
     },
     createImage: function(file) {
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
-
       reader.onload = (e) => {
         vm.image = e.target.result;
-        this.images.push(vm.image)
+        this.imageurl.push(this.image)
       };
-      reader.readAsDataURL(file);
-      this.image = file
+      reader.readAsDataURL(file)
+      this.images.push(file)
     },
     postform: function() {
       console.log('============');
       var formData = new FormData();
       formData.append('author', this.author);
-      formData.append('desc', this.desc);
-      formData.append('volume', this.volume);
+      formData.append('title', this.title);
       formData.append('chapter', this.chapter);
-      formData.append('images', this.images);
 
-      axios.post('http://localhost:3000/posts', formData)
+      for (let i = 0 ; i<this.images.length ; i++){
+      formData.append('images[]', this.images[i]);
+      }
+
+      axios.post('http://localhost:3000/upload', formData)
       .then(function (response) {
         console.log(response);
       })
@@ -100,6 +94,7 @@ Vue.component('comic-upload', {
     removeImage: function (e) {
       this.image = '';
       this.images = [];
+      this.imageurl = [];
     }
   }
 })

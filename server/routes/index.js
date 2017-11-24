@@ -9,7 +9,7 @@
   router.get('/', Controller.findAll)
 
   router.post('/upload',
-    images.multer.array('image'), 
+    images.multer.array('images[]'), 
     images.sendUploadToGCS, 
     Controller.create)
 
