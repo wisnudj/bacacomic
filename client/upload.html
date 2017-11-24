@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Read. Comiga</title>
+    <title>Upload. Comiga</title>
 
     <!-- Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- asset/style.css -->
-    <link rel="stylesheet" href="assets/css/show.css">
+    <link rel="stylesheet" href="assets/css/upload.css">
 
   </head>
   <body>
@@ -51,19 +51,19 @@
               </li> -->
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <!-- <ul class="nav navbar-nav navbar-right">
               <li><a :href="link" download>Download this image</a></li>
               <li><a href="#">Download this chapter</a></li>
-            </ul>
+            </ul> -->
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
       
-      <comic-show @download-link="downloadlink"/>
+      <comic-upload />
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="assets/js/comic-show.js" charset="utf-8"></script>
+    <script src="assets/js/comic-upload.js" charset="utf-8"></script>
     <script src="assets/js/comic-handler.js"></script>
   </body>
 </html>
