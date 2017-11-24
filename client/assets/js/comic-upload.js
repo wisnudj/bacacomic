@@ -85,6 +85,7 @@ Vue.component('comic-upload', {
       .then((response) => {
         console.log(response);
         alert("upload success");
+        location.reload(); 
       })
       .catch((error) => {
         console.log(error);
