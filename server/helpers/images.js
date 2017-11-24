@@ -29,7 +29,7 @@ const sendUploadToGCS = (req, res, next) => {
   
   req.files.forEach((newFile, index) => {
     let gcsname = newFile.originalname   
-    let file = bucket.file(`/${req.body.title}_${req.body.chapter}/${gcsname}`)
+    let file = bucket.file(`/img/${req.body.title}_${req.body.chapter}/${gcsname}`)
     let stream = file.createWriteStream({
       metadata: {
         contentType: req.files.mimetype
