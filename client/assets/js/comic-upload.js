@@ -1,7 +1,7 @@
 Vue.component('comic-upload', {
   template: `
   <div class="uploader container col-md-6 col-md-offset-3">
-    <form>
+    <form enctype="multipart/form-data" method="post">
       <fieldset>
         <legend>Upload your comic</legend>
         <div class="form-group row">
@@ -25,7 +25,7 @@ Vue.component('comic-upload', {
         </div>
         <div class="form-group">
           <label for="exampleInputFile">File input</label>
-          <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file" @change="onFileChange">
+          <input class="form-control-file" id="inputfile" aria-describedby="fileHelp" type="file" @change="onFileChange" multiple>
           <small id="fileHelp" class="form-text text-muted">maximum file size: 10MB</small>
         </div>
         <div v-if="images">
@@ -45,8 +45,7 @@ Vue.component('comic-upload', {
       chapter: '',
       image: '',
       images: [],
-      active: 'item active',
-      noactive: 'item'
+      active: 'item active'
     }
   },
   methods: {
@@ -56,8 +55,17 @@ Vue.component('comic-upload', {
         return;
       else {
         this.createImage(files[0]);
+        this.tobinary(files[0]);
       }
       this.image = ''
+    },
+    tobinary: function(file){
+      var read = new FileReader();
+      read.onload = function(e) {
+        console.log(e)
+        this.bfile = e.target.result 
+      }
+      read.readAsText(file);
     },
     createImage: function(file) {
       var image = new Image();
@@ -69,6 +77,7 @@ Vue.component('comic-upload', {
         this.images.push(vm.image)
       };
       reader.readAsDataURL(file);
+      this.image = file
     },
     postform: function() {
       console.log('============');
