@@ -26,12 +26,10 @@ Vue.component('comic-upload', {
         <div class="form-group">
           <label for="exampleInputFile">File input</label>
           <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file" @change="onFileChange">
-          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+          <small id="fileHelp" class="form-text text-muted">maximum file size: 10MB</small>
         </div>
         <div v-if="images">
-          <div v-for="img in images">
-            <img :src="img" />
-          </div>
+            <span @click="removeImage"><img v-for="(img, index) in images" :src="img" /></span>
           <!-- <button class="btn btn-primary" @click="removeImage">Remove image</button> -->
         </div>
         <button v-on:click="postform" type="submit" value="Submit" class="btn btn-primary">Submit</button>
